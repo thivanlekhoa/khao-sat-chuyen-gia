@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khảo sát Chuyên gia & Nhà tuyển dụng - Ngành Địa lý tự nhiên | HUNRE</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #047857;
+            --primary-dark: #064e3b;
+            --primary-light: #d1fae5;
+            --accent: #0284c7;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --border: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 32px 16px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* Header Card */
+        .header-card {
+            background: linear-gradient(135deg, #064e3b 0%, #047857 50%, #0d9488 100%);
+            color: #ffffff;
+            border-radius: var(--radius);
+            padding: 40px 36px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-card::after {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 240px;
+            height: 240px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 50%;
+        }
+
+        .institution-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-size: 13.5px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .header-title {
+            font-size: 23px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 18px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.12);
+        }
+
+        .header-desc {
+            font-size: 15px;
+            color: #ecfdf5;
+            line-height: 1.75;
+            border-top: 1px solid rgba(255, 255, 255, 0.22);
+            padding-top: 18px;
+        }
+
+        /* Mission / Strategic Quote Box */
+        .mission-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid var(--primary);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 22px;
+            font-size: 13.5px;
+            color: #166534;
+            line-height: 1.65;
+        }
+
+        .mission-box strong {
+            color: #14532d;
+        }
+
+        /* Section Cards */
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .section-icon {
+            width: 38px;
+            height: 38px;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        /* Form Controls */
+        .form-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            font-size: 14.5px;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+
+        .required {
+            color: #ef4444;
+            margin-left: 4px;
+        }
+
+        .input-text, textarea {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-size: 14.5px;
+            font-family: inherit;
+            color: var(--text-main);
+            transition: all 0.2s;
+            background: #ffffff;
+        }
+
+        .input-text:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.15);
+        }
+
+        /* Experience Table */
+        .exp-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .exp-table th {
+            background-color: #f1f5f9;
+            padding: 10px 8px;
+            font-weight: 600;
+            color: #334155;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .exp-table td {
+            padding: 10px 8px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .exp-table td.field-name {
+            text-align: left;
+            font-weight: 500;
+            padding-left: 14px;
+            width: 32%;
+        }
+
+        /* Choice Cards for questions */
+        .choice-cards-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .choice-card-item {
+            flex: 1;
+            min-width: 130px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 10px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            font-size: 14px;
+            background: #ffffff;
+        }
+
+        .choice-card-item:hover {
+            border-color: var(--primary);
+            background: #f0fdf4;
+        }
+
+        .choice-card-item.selected {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .choice-card-item input[type="radio"] {
+            display: none;
+        }
+
+        /* Likert Grid Table */
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin-top: 10px;
+        }
+
+        .likert-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+            background: #ffffff;
+        }
+
+        .likert-table th {
+            background-color: #f1f5f9;
+            padding: 12px 8px;
+            font-weight: 600;
+            color: #334155;
+            text-align: center;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .likert-table th.col-desc {
+            text-align: left;
+            width: 48%;
+            padding-left: 16px;
+        }
+
+        .likert-table td {
+            padding: 12px 8px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s;
+        }
+
+        .likert-table td.col-desc {
+            text-align: left;
+            padding-left: 16px;
+            font-weight: 500;
+            color: #1e293b;
+        }
+
+        .likert-table tr:hover td {
+            background-color: #f8fafc;
+        }
+
+        .likert-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .likert-radio {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary);
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .likert-radio:hover {
+            transform: scale(1.15);
+        }
+
+        /* Submit Button */
+        .submit-container {
+            text-align: center;
+            margin-top: 36px;
+            margin-bottom: 50px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #047857 0%, #064e3b 100%);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: inherit;
+            padding: 15px 44px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(4, 120, 87, 0.35);
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(4, 120, 87, 0.45);
+        }
+
+        .btn-submit:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Success & Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 16px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 40px 30px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            transform: scale(0.9);
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-icon {
+            width: 68px;
+            height: 68px;
+            background: #d1fae5;
+            color: #059669;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 20px;
+        }
+
+        .modal-title {
+            font-size: 21px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+
+        .modal-text {
+            font-size: 15px;
+            color: #475569;
+            line-height: 1.65;
+            margin-bottom: 26px;
+        }
+
+        .btn-modal {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 11px 26px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { padding: 16px 8px; }
+            .header-card { padding: 26px 20px; }
+            .header-title { font-size: 19px; }
+            .card { padding: 22px 16px; }
+            .form-grid-3, .form-grid-2 { grid-template-columns: 1fr; gap: 14px; }
+            .choice-cards-row { flex-direction: column; }
+            .likert-table th, .likert-table td { padding: 8px 4px; font-size: 12px; }
+            .likert-table th.col-desc, .likert-table td.col-desc { width: 42%; padding-left: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header-card">
+            <div class="institution-badge">
+                <i class="fa-solid fa-building-columns"></i> Trường Đại học Tài nguyên và Môi trường Hà Nội
+            </div>
+            <h1 class="header-title">
+                BẢNG HỎI LẤY Ý KIẾN CHUYÊN GIA VÀ NHÀ TUYỂN DỤNG<br>
+                VỀ NHU CẦU NHÂN LỰC ĐỐI VỚI NGÀNH ĐÀO TẠO ĐỊA LÝ TỰ NHIÊN
+            </h1>
+            <div class="header-desc">
+                Kính gửi Quý chuyên gia tư vấn và Nhà tuyển dụng,<br>
+                Trường Đại học Tài nguyên và Môi trường Hà Nội dự kiến mở ngành đào tạo <strong>Địa lý tự nhiên</strong> trình độ đại học trong thời gian sắp tới.<br>
+                Nhà trường kính mong Quý chuyên gia tư vấn có kinh nghiệm và hiểu biết về lĩnh vực Địa lý tự nhiên dành thời gian cho ý kiến về nhu cầu nhân lực đối với ngành đào tạo này.
+                Các ý kiến đóng góp và nhận xét của Quý chuyên gia sẽ giúp Nhà trường có thêm căn cứ thực tiễn vững chắc để hoàn thiện đề án mở ngành.
+            </div>
+        </header>
+
+        <form id="expertSurveyForm">
+            <!-- PHẦN I: THÔNG TIN CÁ NHÂN & CHUYÊN GIA -->
+            <section class="card">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fa-regular fa-address-card"></i></div>
+                    <h2 class="section-title">PHẦN I. THÔNG TIN CHUYÊN GIA / NHÀ TUYỂN DỤNG</h2>
+                </div>
+
+                <div class="form-grid-3">
+                    <div class="form-group" style="grid-column: span 2;">
+                        <label class="form-label" for="fullName">1. Họ tên, học hàm/học vị <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" class="input-text" placeholder="Ví dụ: PGS. TS. Nguyễn Văn A" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">2. Giới tính <span class="required">*</span></label>
+                        <div style="display: flex; gap: 20px; margin-top: 10px;">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="radio" name="gender" value="Nam" required> Nam
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="radio" name="gender" value="Nữ"> Nữ
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-grid-3">
+                    <div class="form-group">
+                        <label class="form-label">3. Độ tuổi <span class="required">*</span></label>
+                        <select name="age" class="input-text" required>
+                            <option value="">-- Chọn độ tuổi --</option>
+                            <option value="30-40">30 - 40</option>
+                            <option value="40-50">40 - 50</option>
+                            <option value="Trên 50">Trên 50</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="position">4. Chức vụ <span class="required">*</span></label>
+                        <input type="text" id="position" name="position" class="input-text" placeholder="Ví dụ: Trưởng phòng / Viện trưởng..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="organization">5. Cơ quan công tác <span class="required">*</span></label>
+                        <input type="text" id="organization" name="organization" class="input-text" placeholder="Tên cơ quan, doanh nghiệp..." required>
+                    </div>
+                </div>
+
+                <div class="form-grid-3">
+                    <div class="form-group">
+                        <label class="form-label" for="orgAddress">6. Địa chỉ cơ quan</label>
+                        <input type="text" id="orgAddress" name="orgAddress" class="input-text" placeholder="Quận/Huyện, Tỉnh/TP...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="phone">7. Số điện thoại liên hệ</label>
+                        <input type="tel" id="phone" name="phone" class="input-text" placeholder="09xxxxxxxx">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">8. Địa chỉ thư điện tử (Email) <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" class="input-text" placeholder="expert@example.com" required>
+                    </div>
+                </div>
+
+                <div class="form-grid-3">
+                    <div class="form-group">
+                        <label class="form-label" for="highestDegree">9. Trình độ chuyên môn cao nhất <span class="required">*</span></label>
+                        <input type="text" id="highestDegree" name="highestDegree" class="input-text" placeholder="Tiến sĩ / Thạc sĩ / Đại học..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="major">10. Ngành đào tạo <span class="required">*</span></label>
+                        <input type="text" id="major" name="major" class="input-text" placeholder="Địa lý / Khoa học Trái đất / Môi trường..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="institution">11. Nơi cấp bằng</label>
+                        <input type="text" id="institution" name="institution" class="input-text" placeholder="Cơ sở đào tạo cấp bằng...">
+                    </div>
+                </div>
+
+                <!-- Kinh nghiệm công tác -->
+                <div class="form-group" style="margin-top: 10px;">
+                    <label class="form-label">12. Kinh nghiệm công tác theo từng lĩnh vực:</label>
+                    <div class="table-responsive">
+                        <table class="exp-table">
+                            <thead>
+                                <tr>
+                                    <th>Lĩnh vực</th>
+                                    <th>Không / Chưa có</th>
+                                    <th>&lt; 5 năm</th>
+                                    <th>5 - 10 năm</th>
+                                    <th>&gt; 10 năm</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="field-name">1. Quản lý</td>
+                                    <td><input type="radio" name="exp_ql" value="Không" checked></td>
+                                    <td><input type="radio" name="exp_ql" value="< 5 năm"></td>
+                                    <td><input type="radio" name="exp_ql" value="5 - 10 năm"></td>
+                                    <td><input type="radio" name="exp_ql" value="> 10 năm"></td>
+                                </tr>
+                                <tr>
+                                    <td class="field-name">2. Nghiên cứu</td>
+                                    <td><input type="radio" name="exp_nc" value="Không" checked></td>
+                                    <td><input type="radio" name="exp_nc" value="< 5 năm"></td>
+                                    <td><input type="radio" name="exp_nc" value="5 - 10 năm"></td>
+                                    <td><input type="radio" name="exp_nc" value="> 10 năm"></td>
+                                </tr>
+                                <tr>
+                                    <td class="field-name">3. Giáo dục</td>
+                                    <td><input type="radio" name="exp_gd" value="Không" checked></td>
+                                    <td><input type="radio" name="exp_gd" value="< 5 năm"></td>
+                                    <td><input type="radio" name="exp_gd" value="5 - 10 năm"></td>
+                                    <td><input type="radio" name="exp_gd" value="> 10 năm"></td>
+                                </tr>
+                                <tr>
+                                    <td class="field-name">4. Tư vấn</td>
+                                    <td><input type="radio" name="exp_tv" value="Không" checked></td>
+                                    <td><input type="radio" name="exp_tv" value="< 5 năm"></td>
+                                    <td><input type="radio" name="exp_tv" value="5 - 10 năm"></td>
+                                    <td><input type="radio" name="exp_tv" value="> 10 năm"></td>
+                                </tr>
+                                <tr>
+                                    <td class="field-name">
+                                        5. Khác (ghi rõ): 
+                                        <input type="text" name="exp_khac_name" id="expKhacName" class="input-text" style="padding: 4px 8px; width: 55%; margin-top: 4px;" placeholder="Tên lĩnh vực...">
+                                    </td>
+                                    <td><input type="radio" name="exp_khac" value="Không" checked></td>
+                                    <td><input type="radio" name="exp_khac" value="< 5 năm"></td>
+                                    <td><input type="radio" name="exp_khac" value="5 - 10 năm"></td>
+                                    <td><input type="radio" name="exp_khac" value="> 10 năm"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PHẦN II: LẤY Ý KIẾN VỀ NGÀNH ĐÀO TẠO -->
+            <section class="card">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h2 class="section-title">PHẦN II. Ý KIẾN VỀ NGÀNH ĐÀO TẠO ĐỊA LÝ TỰ NHIÊN</h2>
+                </div>
+
+                <!-- Câu 1 -->
+                <div class="form-group">
+                    <label class="form-label">
+                        1. Đánh giá mức độ cần thiết của ngành đào tạo Địa lý tự nhiên (Trình độ đại học) tại thời điểm hiện tại: <span class="required">*</span>
+                    </label>
+                    <div class="choice-cards-row">
+                        <label class="choice-card-item">
+                            <input type="radio" name="necessityLevel" value="Rất không cần thiết" required>
+                            <span>1 - Rất không cần thiết</span>
+                        </label>
+                        <label class="choice-card-item">
+                            <input type="radio" name="necessityLevel" value="Không cần thiết">
+                            <span>2 - Không cần thiết</span>
+                        </label>
+                        <label class="choice-card-item">
+                            <input type="radio" name="necessityLevel" value="Phân vân">
+                            <span>3 - Phân vân</span>
+                        </label>
+                        <label class="choice-card-item">
+                            <input type="radio" name="necessityLevel" value="Cần thiết">
+                            <span>4 - Cần thiết</span>
+                        </label>
+                        <label class="choice-card-item">
+                            <input type="radio" name="necessityLevel" value="Rất cần thiết">
+                            <span>5 - Rất cần thiết</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Câu 2 -->
+                <div class="form-group" style="margin-top: 24px;">
+                    <label class="form-label">
+                        2. Theo Ông/Bà, nhu cầu tuyển dụng đối với người tốt nghiệp từ ngành đào tạo này sẽ thay đổi như thế nào trong tương lai? <span class="required">*</span>
+                    </label>
+                    <div class="choice-cards-row" style="max-width: 480px;">
+                        <label class="choice-card-item">
+                            <input type="radio" name="recruitmentTrend" value="Tăng" required>
+                            <i class="fa-solid fa-arrow-trend-up" style="color: #059669; font-size: 20px; margin-bottom: 6px;"></i>
+                            <span>Tăng</span>
+                        </label>
+                        <label class="choice-card-item">
+                            <input type="radio" name="recruitmentTrend" value="Không thay đổi">
+                            <i class="fa-solid fa-arrows-left-right" style="color: #64748b; font-size: 20px; margin-bottom: 6px;"></i>
+                            <span>Không thay đổi</span>
+                        </label>
+                        <label class="choice-card-item">
+                            <input type="radio" name="recruitmentTrend" value="Giảm">
+                            <i class="fa-solid fa-arrow-trend-down" style="color: #dc2626; font-size: 20px; margin-bottom: 6px;"></i>
+                            <span>Giảm</span>
+                        </label>
+                    </div>
+                    <div style="margin-top: 12px;">
+                        <label class="form-label" style="font-size: 13.5px; color: var(--text-muted);">Giải thích lý do:</label>
+                        <textarea name="recruitmentExplain" class="input-text" rows="2" placeholder="Nêu lý do giải thích cho nhận định trên..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Câu 3 -->
+                <div class="form-group" style="margin-top: 28px;">
+                    <label class="form-label">
+                        3. Ý kiến về xu hướng phát triển ngành Địa lý tự nhiên và sự phù hợp với Nhà trường:
+                    </label>
+
+                    <div class="mission-box">
+                        <strong>📌 Sứ mạng & Mục tiêu chiến lược Trường ĐH TN&MTHN:</strong><br>
+                        • <em>Sứ mạng:</em> Cung cấp nguồn nhân lực chất lượng cao và các sản phẩm khoa học, công nghệ phục vụ phát triển bền vững, an toàn (NQ số 65/NQ-HĐTĐHHN ngày 04/10/2023).<br>
+                        • <em>Mục tiêu chiến lược đến 2035:</em> Trở thành trường đại học trọng điểm quốc gia trong lĩnh vực tài nguyên và môi trường theo định hướng ứng dụng (NQ số 75/NQ-HĐTĐHHN ngày 28/12/2020).
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <label class="form-label" style="font-size: 14px;">
+                            a) Theo Ông/Bà, ngành Địa lý tự nhiên có phù hợp với sứ mạng và mục tiêu chiến lược của Nhà trường không?
+                        </label>
+                        <textarea name="suitabilityMission" class="input-text" rows="2" placeholder="Ý kiến nhận xét của Ông/Bà..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="form-label" style="font-size: 14px;">
+                            b) Ông/Bà cho ý kiến về sự phù hợp với chiến lược quy hoạch phát triển kinh tế - xã hội của ngành Địa lý tự nhiên tại địa phương, vùng và cả nước?
+                        </label>
+                        <textarea name="suitabilityPlanning" class="input-text" rows="2" placeholder="Ý kiến nhận xét của Ông/Bà..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Câu 4 -->
+                <div class="form-group" style="margin-top: 24px;">
+                    <label class="form-label" for="jobPositions">
+                        4. Những vị trí việc làm mà người học khi tốt nghiệp có thể đảm nhận tại cơ quan/đơn vị do Ông/Bà phụ trách hoặc trong ngành?
+                    </label>
+                    <textarea id="jobPositions" name="jobPositions" class="input-text" rows="2" placeholder="Ví dụ: Chuyên viên GIS, cán bộ quan trắc môi trường, chuyên viên quy hoạch tài nguyên, nghiên cứu viên..."></textarea>
+                </div>
+            </section>
+
+            <!-- PHẦN III: ĐÁNH GIÁ NĂNG LỰC CỦA NGƯỜI HỌC (16 NĂNG LỰC) -->
+            <section class="card">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fa-solid fa-list-check"></i></div>
+                    <h2 class="section-title">PHẦN III. ĐÁNH GIÁ CÁC NĂNG LỰC CẦN CÓ CỦA NGƯỜI HỌC</h2>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        5. Theo Ông/Bà, người học tốt nghiệp từ ngành Địa lý tự nhiên cần có những năng lực gì và ở mức độ cần thiết như thế nào? <span class="required">*</span>
+                    </label>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">
+                        <em>(Quy ước thang điểm: 1: Rất không cần thiết | 2: Không cần thiết | 3: Bình thường | 4: Cần thiết | 5: Rất cần thiết)</em>
+                    </p>
+
+                    <div class="table-responsive">
+                        <table class="likert-table">
+                            <thead>
+                                <tr>
+                                    <th class="col-desc">Nội dung năng lực, phẩm chất</th>
+                                    <th>1<br><span style="font-weight: 400; font-size: 11px;">Rất KCT</span></th>
+                                    <th>2<br><span style="font-weight: 400; font-size: 11px;">KCT</span></th>
+                                    <th>3<br><span style="font-weight: 400; font-size: 11px;">Bình thường</span></th>
+                                    <th>4<br><span style="font-weight: 400; font-size: 11px;">Cần thiết</span></th>
+                                    <th>5<br><span style="font-weight: 400; font-size: 11px;">Rất CT</span></th>
+                                </tr>
+                            </thead>
+                            <tbody id="likertExpertBody">
+                                <!-- Rendered automatically via Javascript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Câu 6 -->
+                <div class="form-group" style="margin-top: 24px;">
+                    <label class="form-label" for="specialRequirements">
+                        6. Ông/Bà có những yêu cầu đặc biệt nào đối với người học tốt nghiệp từ ngành này?
+                    </label>
+                    <textarea id="specialRequirements" name="specialRequirements" class="input-text" rows="2" placeholder="Ví dụ: Kỹ năng ngoại địa, khả năng sử dụng phần mềm viễn thám, chứng chỉ nghề nghiệp..."></textarea>
+                </div>
+
+                <!-- Câu 7 -->
+                <div class="form-group" style="margin-top: 20px;">
+                    <label class="form-label" for="recruitmentNotes">
+                        7. Theo Ông/Bà, người học tốt nghiệp từ ngành đào tạo này cần lưu ý thêm các điều gì khi xin ứng tuyển vào các vị trí việc làm tại các cơ quan/doanh nghiệp?
+                    </label>
+                    <textarea id="recruitmentNotes" name="recruitmentNotes" class="input-text" rows="2" placeholder="Ý kiến tư vấn, định hướng nghề nghiệp của Ông/Bà..."></textarea>
+                </div>
+            </section>
+
+            <!-- Nút gửi -->
+            <div class="submit-container">
+                <button type="submit" id="submitExpertBtn" class="btn-submit">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Gửi ý kiến đóng góp</span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal thông báo thành công -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-box">
+            <div class="modal-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <h3 class="modal-title">Gửi ý kiến thành công!</h3>
+            <p class="modal-text">Trường Đại học Tài nguyên và Môi trường Hà Nội xin chân thành cảm ơn những ý kiến đóng góp và tư vấn quý báu của Quý Chuyên gia / Nhà tuyển dụng.</p>
+            <button class="btn-modal" onclick="resetExpertForm()">Gửi thêm phản hồi khác</button>
+        </div>
+    </div>
+
+    <script>
+        // =========================================================================
+        // 🔴 ĐIỀN ĐƯỜNG LINK GOOGLE APPS SCRIPT WEB APP DÀNH CHO CHUYÊN GIA TẠI ĐÂY:
+        // =========================================================================
+        const GOOGLE_SCRIPT_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyE-u54ViK1oB79TI2geTZ6rb2c-lPTdehsKLsvU6qgFJxihIaNDlJUUXFP32Gq2e0JSQ/exec";
+
+        // Danh sách 16 năng lực, phẩm chất trong phiếu khảo sát chuyên gia
+        const expertCriteria = [
+            "1. Tính sáng tạo trong công việc",
+            "2. Tư duy phản biện",
+            "3. Năng lực ngoại ngữ",
+            "4. Năng lực công nghệ thông tin",
+            "5. Năng lực kỹ thuật số",
+            "6. Mức độ tự chủ trong công việc",
+            "7. Đạo đức và trách nhiệm nghề nghiệp",
+            "8. Kỹ năng giao tiếp (với đồng nghiệp, khách hàng)",
+            "9. Kỹ năng làm việc nhóm",
+            "10. Kỹ năng giải quyết vấn đề có tính liên ngành/phức hợp",
+            "11. Kỹ năng quản lý chất lượng công việc",
+            "12. Tinh thần kỷ luật trong công việc",
+            "13. Tinh thần cầu thị, học hỏi trong công việc",
+            "14. Ý thức phát triển bền vững",
+            "15. Trách nhiệm đối với cộng đồng, xã hội",
+            "16. Sự cam kết đồng hành đối với Cơ quan/doanh nghiệp"
+        ];
+
+        // Khởi tạo bảng 16 năng lực
+        const tbody = document.getElementById('likertExpertBody');
+        expertCriteria.forEach((item, index) => {
+            const rowId = `cap_${index + 1}`;
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td class="col-desc">${item}</td>
+                <td><input type="radio" class="likert-radio" name="${rowId}" value="1" required></td>
+                <td><input type="radio" class="likert-radio" name="${rowId}" value="2" required></td>
+                <td><input type="radio" class="likert-radio" name="${rowId}" value="3" required></td>
+                <td><input type="radio" class="likert-radio" name="${rowId}" value="4" required></td>
+                <td><input type="radio" class="likert-radio" name="${rowId}" value="5" required></td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        // Xử lý hiệu ứng chọn cho Choice cards
+        document.querySelectorAll('.choice-card-item').forEach(card => {
+            card.addEventListener('click', function() {
+                const radio = this.querySelector('input[type="radio"]');
+                if (radio) {
+                    radio.checked = true;
+                    const groupName = radio.name;
+                    document.querySelectorAll(`input[name="${groupName}"]`).forEach(r => {
+                        r.closest('.choice-card-item')?.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                }
+            });
+        });
+
+        // Xử lý gửi biểu mẫu
+        document.getElementById('expertSurveyForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitExpertBtn');
+            const originalBtnHtml = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang gửi dữ liệu...';
+
+            const formElem = document.getElementById('expertSurveyForm');
+            const formDataObj = new FormData(formElem);
+
+            const payload = {};
+            formDataObj.forEach((value, key) => {
+                payload[key] = value;
+            });
+
+            try {
+                if (GOOGLE_SCRIPT_WEB_APP_URL.includes("YOUR_EXPERT_GOOGLE_APPS_SCRIPT_WEB_APP_URL")) {
+                    // Demo mode khi chưa dán link Web App
+                    setTimeout(() => {
+                        showSuccessModal();
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnHtml;
+                    }, 800);
+                    return;
+                }
+
+                await fetch(GOOGLE_SCRIPT_WEB_APP_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                showSuccessModal();
+            } catch (err) {
+                alert('Có lỗi xảy ra khi gửi phản hồi: ' + err.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHtml;
+            }
+        });
+
+        function showSuccessModal() {
+            document.getElementById('successModal').classList.add('active');
+        }
+
+        function resetExpertForm() {
+            document.getElementById('expertSurveyForm').reset();
+            document.querySelectorAll('.choice-card-item').forEach(card => card.classList.remove('selected'));
+            document.getElementById('successModal').classList.remove('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
